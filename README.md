@@ -1,3 +1,26 @@
+# Urho3D Community Edition
+
+This is an unstable version of Urho3D game engine.
+
+1. It is guaranteed that your PR will be accepted in a week if nobody objects to it or suggests an improvement.
+   No comments means everybody agrees with the PR.
+2. Please test your change thoroughly. PR will be accepted quickly probably with only light eyeballing so
+   the PR author is solely responsible for the quality of the change.
+3. Most useful changes will be merged to Urho3D master branch. To make this simple, consider squashing the PR
+   into a single commit so it would be easier to cherry-pick it.
+4. Please try to keep Urho3D code style in your change. You can keep any style in your change but any deviation
+   from Urho3D code style requires additional effort to merge it into master. Engine maintainers may avoid it.
+5. You are welcome to make PR to fix a bug or add new feature
+   * Don’t reduce engine functionality. The only exception would be if the feature is outdated, not in use by anyone and blocking your PR.
+   * Don’t change existing code style. You can clean up, reformat or refactor code you wrote previously. Changing someone else's code may
+        trigger a downward spiral of hatred. Just leave it as is.
+   * Don’t spend your time on tweaking interface colors, new logo design, etc. It is highly subjective and a matter of opinion.
+        If you want to make a beautiful art work with Urho3D consider making it in a separate repository
+        and paste a link to in at https://discourse.urho3d.io/c/showcase/17
+6. It would be great if new code was accessible via scripting languages. You can provide script bindings but you don’t have to.
+
+------------------------
+
 ![Urho3D logo](https://raw.githubusercontent.com/urho3d/Urho3D/master/bin/Data/Textures/LogoLarge.png)
 
 # Urho3D
