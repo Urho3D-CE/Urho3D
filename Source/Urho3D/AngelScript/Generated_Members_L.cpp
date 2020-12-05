@@ -247,7 +247,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     // template<typename T> const T* Object::Cast() const | File: ../Core/Object.h
     // Not registered because template
     // void Component::CleanupConnection(Connection* connection) | File: ../Scene/Component.h
-    engine->RegisterObjectMethod("Light", "void CleanupConnection(Connection@+)", asMETHODPR(Light, CleanupConnection, (Connection*), void), asCALL_THISCALL);
+    // Not registered because have @manualbind mark
     // void Light::DrawDebugGeometry(DebugRenderer* debug, bool depthTest) override | File: ../Graphics/Light.h
     engine->RegisterObjectMethod("Light", "void DrawDebugGeometry(DebugRenderer@+, bool)", asMETHODPR(Light, DrawDebugGeometry, (DebugRenderer*, bool), void), asCALL_THISCALL);
     // virtual bool Drawable::DrawOcclusion(OcclusionBuffer* buffer) | File: ../Graphics/Drawable.h
@@ -2941,6 +2941,8 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Log", "int get_weakRefs() const", asMETHODPR(Log, WeakRefs, () const, int), asCALL_THISCALL);
     // static void Log::Write(int level, const String& message) | File: ../IO/Log.h
     // Not registered because have @nobind mark
+    // static void Log::WriteFormat(int level, const char* format,...) | File: ../IO/Log.h
+    // Error: type "const char*" can not automatically bind
     // static void Log::WriteRaw(const String& message, bool error=false) | File: ../IO/Log.h
     engine->SetDefaultNamespace("Log");
     engine->RegisterGlobalFunction("void WriteRaw(const String&in, bool = false)", asFUNCTIONPR(Log::WriteRaw, (const String&, bool), void), asCALL_CDECL);
@@ -2970,7 +2972,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     // template<typename T> const T* Object::Cast() const | File: ../Core/Object.h
     // Not registered because template
     // void Component::CleanupConnection(Connection* connection) | File: ../Scene/Component.h
-    engine->RegisterObjectMethod("LogicComponent", "void CleanupConnection(Connection@+)", asMETHODPR(LogicComponent, CleanupConnection, (Connection*), void), asCALL_THISCALL);
+    // Not registered because have @manualbind mark
     // virtual void Component::DrawDebugGeometry(DebugRenderer* debug, bool depthTest) | File: ../Scene/Component.h
     engine->RegisterObjectMethod("LogicComponent", "void DrawDebugGeometry(DebugRenderer@+, bool)", asMETHODPR(LogicComponent, DrawDebugGeometry, (DebugRenderer*, bool), void), asCALL_THISCALL);
     // bool Animatable::GetAnimationEnabled() const | File: ../Scene/Animatable.h
