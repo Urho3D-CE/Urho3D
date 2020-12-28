@@ -3,10 +3,7 @@
 #include "../Precompiled.h"
 #include "../AngelScript/APITemplates.h"
 
-#include "../Core/WorkQueue.h"
-#include "../Graphics/Graphics.h"
-#include "../UI/Window.h"
-
+#include "../AngelScript/GeneratedIncludes.h"
 #include "../AngelScript/Manual.h"
 
 namespace Urho3D
@@ -69,7 +66,7 @@ static WorkQueue* WorkQueue_WorkQueue_Context()
     return new WorkQueue(GetScriptContext());
 }
 
-// WindowModeParams::~WindowModeParams() | Implicitly-declared 
+// WindowModeParams::~WindowModeParams() | Implicitly-declared
 static void WindowModeParams_Destructor(WindowModeParams* ptr)
 {
     ptr->~WindowModeParams();

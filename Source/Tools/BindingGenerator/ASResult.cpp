@@ -29,94 +29,10 @@
 namespace ASBindingGenerator
 {
 
-void ASGeneratedFile_Base::AddHeader(const string& headerFile)
-{
-    if (!CONTAINS(headers_, headerFile))
-        headers_.push_back(headerFile);
-}
-
-void ASGeneratedFile_Base::AddIgnoredHeader(const string& headerFile)
-{
-    if (!CONTAINS(ignoredHeaders_, headerFile))
-        ignoredHeaders_.push_back(headerFile);
-}
-
-void ASGeneratedFile_Base::WriteHeaders(ofstream& out)
-{
-    sort(ignoredHeaders_.begin(), ignoredHeaders_.end());
-    sort(headers_.begin(), headers_.end());
-
-    if (ignoredHeaders_.size() > 0)
-    {
-        out << "// Ignored headers\n";
-
-        for (string header : ignoredHeaders_)
-        {
-            string insideDefine = InsideDefine(header);
-            if (!insideDefine.empty())
-                out << "//#ifdef " << insideDefine << "\n";
-
-            out << "//#include \"" << header << "\"\n";
-
-            if (!insideDefine.empty())
-                out << "//#endif\n";
-        }
-
-        out << "\n";
-    }
-
-    for (string header : headers_)
-    {
-        string insideDefine = InsideDefine(header);
-        if (!insideDefine.empty())
-            out << "#ifdef " << insideDefine << "\n";
-
-        out << "#include \"" << header << "\"\n";
-
-        if (!insideDefine.empty())
-            out << "#endif\n";
-    }
-
-    if (headers_.size() > 0)
-        out << "\n";
-}
-
-// ============================================================================
-
 ASGeneratedFile_WithRegistrationFunction::ASGeneratedFile_WithRegistrationFunction(const string& outputFilePath, const string& functionName)
 {
     outputFilePath_ = outputFilePath;
     functionName_ = functionName;
-}
-
-// ============================================================================
-
-void ASGeneratedFile_Enums::Save()
-{
-    ofstream out(outputFilePath_);
-
-    out <<
-        "// DO NOT EDIT. This file is generated\n"
-        "\n"
-        "// We need register all enums before registration of any members because members can use any enums\n"
-        "\n"
-        "#include \"../Precompiled.h\"\n"
-        "#include \"../AngelScript/APITemplates.h\"\n"
-        "\n";
-
-    WriteHeaders(out);
-
-    out <<
-        "namespace Urho3D\n"
-        "{\n"
-        "\n"
-        << glue_.str() <<
-        "void " << functionName_ << "(asIScriptEngine* engine)\n"
-        "{\n"
-        << reg_.str() <<
-        "}\n"
-        "\n"
-        "}\n";
 }
 
 // ============================================================================
@@ -128,15 +44,13 @@ void ASGeneratedFile_Classes::Save()
     out <<
         "// DO NOT EDIT. This file is generated\n"
         "\n"
-        "// We need register all types before registration of any members because members can use any types\n"
+        "// We need register all types before registration of any functions because functions can use any types\n"
         "\n"
         "#include \"../Precompiled.h\"\n"
         "#include \"../AngelScript/APITemplates.h\"\n"
-        "\n";
-
-    WriteHeaders(out);
-
-    out <<
+        "\n"
+        "#include \"../AngelScript/GeneratedIncludes.h\"\n"
+        "\n"
         "namespace Urho3D\n"
         "{\n"
         "\n"
@@ -161,11 +75,9 @@ void ASGeneratedFile_Members_HighPriority::Save()
         "\n"
         "#include \"../Precompiled.h\"\n"
         "#include \"../AngelScript/APITemplates.h\"\n"
-        "\n";
-
-    WriteHeaders(out);
-
-    out <<
+        "\n"
+        "#include \"../AngelScript/GeneratedIncludes.h\"\n"
+        "\n"
         "namespace Urho3D\n"
         "{\n"
         "\n"
@@ -192,11 +104,8 @@ void ASGeneratedFile_Members::Save()
         "\n"
         "#include \"../Precompiled.h\"\n"
         "#include \"../AngelScript/APITemplates.h\"\n"
-        "\n";
-
-    WriteHeaders(out);
-
-    out <<
+        "\n"
+        "#include \"../AngelScript/GeneratedIncludes.h\"\n"
         "#include \"../AngelScript/Manual.h\"\n"
         "\n"
         "namespace Urho3D\n"
@@ -204,67 +113,6 @@ void ASGeneratedFile_Members::Save()
         "\n"
         "void FakeAddRef(void* ptr);\n"
         "void FakeReleaseRef(void* ptr);\n"
-        "\n"
-        << glue_.str() <<
-        "void " << functionName_ << "(asIScriptEngine* engine)\n"
-        "{\n"
-        << reg_.str() <<
-        "}\n"
-        "\n"
-        "}\n";
-}
-
-// ============================================================================
-
-void ASGeneratedFile_GlobalVariables::Save()
-{
-    ofstream out(outputFilePath_);
-
-    out <<
-        "// DO NOT EDIT. This file is generated\n"
-        "\n"
-        "#include \"../Precompiled.h\"\n"
-        "#include \"../AngelScript/APITemplates.h\"\n"
-        "\n";
-
-    WriteHeaders(out);
-
-    out <<
-        "// Some headers could re-define M_PI, ensure that it's undefined\n"
-        "#undef M_PI\n"
-        "\n";
-
-    out <<
-        "namespace Urho3D\n"
-        "{\n"
-        "\n"
-        << glue_.str() <<
-        "void " << functionName_ << "(asIScriptEngine* engine)\n"
-        "{\n"
-        << reg_.str() <<
-        "}\n"
-        "\n"
-        "}\n";
-}
-
-// ============================================================================
-
-void ASGeneratedFile_GlobalFunctions::Save()
-{
-    ofstream out(outputFilePath_);
-
-    out <<
-        "// DO NOT EDIT. This file is generated\n"
-        "\n"
-        "#include \"../Precompiled.h\"\n"
-        "#include \"../AngelScript/APITemplates.h\"\n"
-        "\n";
-
-    WriteHeaders(out);
-
-    out <<
-        "namespace Urho3D\n"
-        "{\n"
         "\n"
         << glue_.str() <<
         "void " << functionName_ << "(asIScriptEngine* engine)\n"
@@ -293,11 +141,9 @@ void ASGeneratedFile_Templates::Save()
         "\n"
         "#include \"../Precompiled.h\"\n"
         "#include \"../AngelScript/APITemplates.h\"\n"
-        "\n";
-
-    WriteHeaders(out);
-
-    out <<
+        "\n"
+        "#include \"../AngelScript/GeneratedIncludes.h\"\n"
+        "\n"
         "#include \"../AngelScript/Manual.h\"\n"
         "\n"
         "namespace Urho3D\n"
@@ -309,6 +155,394 @@ void ASGeneratedFile_Templates::Save()
         << glue_.str()
         << reg_.str() <<
         "}\n";
+}
+
+bool ProcessedEnum::operator <(const ProcessedEnum& rhs) const
+{
+    if (insideDefine_ != rhs.insideDefine_)
+        return insideDefine_ < rhs.insideDefine_;
+
+    return name_ < rhs.name_;
+}
+
+bool ProcessedGlobalFunction::operator <(const ProcessedGlobalFunction& rhs) const
+{
+    if (insideDefine_ != rhs.insideDefine_)
+        return insideDefine_ < rhs.insideDefine_;
+
+    if (name_ != rhs.name_)
+        return name_ < rhs.name_;
+
+    // Overloads with the same name may exist
+    if (comment_ != rhs.comment_)
+        return comment_ < rhs.comment_;
+
+    // Different specializations of the same template and aliases have the same comment
+    return registration_ < rhs.registration_;
+}
+
+bool ProcessedGlobalVariable::operator <(const ProcessedGlobalVariable& rhs) const
+{
+    if (insideDefine_ != rhs.insideDefine_)
+        return insideDefine_ < rhs.insideDefine_;
+
+    return name_ < rhs.name_;
+}
+
+namespace Result
+{
+    vector<ProcessedEnum> enums_;
+
+    // Write result to GeneratedEnums.cpp
+    static void SaveEnums(const string& outputBasePath)
+    {
+        sort(enums_.begin(), enums_.end());
+
+        ofstream ofs(outputBasePath + "/Source/Urho3D/AngelScript/GeneratedEnums.cpp");
+
+        ofs <<
+            "// DO NOT EDIT. This file is generated\n"
+            "\n"
+            "// We need register all enums before registration of any functions because functions can use any enums\n"
+            "\n"
+            "#include \"../Precompiled.h\"\n"
+            "#include \"../AngelScript/APITemplates.h\"\n"
+            "\n"
+            "#include \"../AngelScript/GeneratedIncludes.h\"\n"
+            "\n"
+            "namespace Urho3D\n"
+            "{\n"
+            "\n";
+
+        for (const ProcessedEnum& processedEnum : enums_)
+        {
+            if (!processedEnum.glue_.size())
+                continue;
+
+            if (!processedEnum.insideDefine_.empty())
+                ofs << "#ifdef " << processedEnum.insideDefine_ << "\n";
+
+            ofs << "// " << processedEnum.comment_ << "\n";
+
+            for (const string& glue : processedEnum.glue_)
+                ofs << glue << "\n";
+
+            if (!processedEnum.insideDefine_.empty())
+                ofs << "#endif\n";
+
+            ofs << "\n";
+        }
+
+        ofs <<
+            "void ASRegisterGeneratedEnums(asIScriptEngine* engine)\n"
+            "{\n";
+
+        bool isFirst = true;
+        string openedDefine;
+
+        for (const ProcessedEnum& processedEnum : enums_)
+        {
+            if (processedEnum.insideDefine_ != openedDefine && !openedDefine.empty())
+            {
+                ofs << "#endif\n";
+                openedDefine.clear();
+            }
+
+            if (!isFirst)
+                ofs << "\n";
+
+            if (processedEnum.insideDefine_ != openedDefine && !processedEnum.insideDefine_.empty())
+            {
+                ofs << "#ifdef " << processedEnum.insideDefine_ << "\n";
+                openedDefine = processedEnum.insideDefine_;
+            }
+
+            ofs << "    // " << processedEnum.comment_ << "\n";
+
+            for (const string& registration : processedEnum.registration_)
+                ofs << "    " << registration << "\n";
+
+            isFirst = false;
+        }
+
+        if (!openedDefine.empty())
+            ofs << "#endif\n";
+
+        ofs <<
+            "}\n"
+            "\n"
+            "}\n";
+    }
+
+    // ============================================================================
+
+    vector<ProcessedGlobalFunction> globalFunctions_;
+
+    // Write result to GlobalFunctions.cpp
+    static void SaveGlobalFunctions(const string& outputBasePath)
+    {
+        sort(globalFunctions_.begin(), globalFunctions_.end());
+
+        ofstream ofs(outputBasePath + "/Source/Urho3D/AngelScript/GeneratedGlobalFunctions.cpp");
+
+        ofs <<
+            "// DO NOT EDIT. This file is generated\n"
+            "\n"
+            "#include \"../Precompiled.h\"\n"
+            "#include \"../AngelScript/APITemplates.h\"\n"
+            "\n"
+            "#include \"../AngelScript/GeneratedIncludes.h\"\n"
+            "\n"
+            "namespace Urho3D\n"
+            "{\n"
+            "\n";
+
+        for (const ProcessedGlobalFunction& globalFunction : globalFunctions_)
+        {
+            if (globalFunction.glue_.empty())
+                continue;
+
+            if (!globalFunction.insideDefine_.empty())
+                ofs << "#ifdef " << globalFunction.insideDefine_ << "\n";
+
+            ofs << "// " << globalFunction.comment_ << "\n";
+            ofs << globalFunction.glue_ << "\n";
+
+            if (!globalFunction.insideDefine_.empty())
+                ofs << "#endif\n";
+
+            ofs << "\n";
+        }
+
+        ofs <<
+            "void ASRegisterGeneratedGlobalFunctions(asIScriptEngine* engine)\n"
+            "{\n";
+
+        bool isFirst = true;
+        string openedDefine;
+        string lastComment;
+
+        for (const ProcessedGlobalFunction& globalFunction : globalFunctions_)
+        {
+            if (globalFunction.insideDefine_ != openedDefine && !openedDefine.empty())
+            {
+                ofs << "#endif\n";
+                openedDefine.clear();
+            }
+
+            if (!isFirst && lastComment != globalFunction.comment_)
+                ofs << "\n";
+
+            if (globalFunction.insideDefine_ != openedDefine && !globalFunction.insideDefine_.empty())
+            {
+                ofs << "#ifdef " << globalFunction.insideDefine_ << "\n";
+                openedDefine = globalFunction.insideDefine_;
+            }
+
+            if (lastComment != globalFunction.comment_)
+                ofs << "    // " << globalFunction.comment_ << "\n";
+
+            ofs << "    " << globalFunction.registration_ << "\n";
+
+            isFirst = false;
+            lastComment = globalFunction.comment_;
+        }
+
+        if (!openedDefine.empty())
+            ofs << "#endif\n";
+
+        ofs <<
+            "}\n"
+            "\n"
+            "}\n";
+    }
+
+    // ============================================================================
+
+    vector<ProcessedGlobalVariable> globalVariables_;
+
+    // Write result to GlobalVariables.cpp
+    static void SaveGlobalVariables(const string& outputBasePath)
+    {
+        sort(globalVariables_.begin(), globalVariables_.end());
+
+        ofstream ofs(outputBasePath + "/Source/Urho3D/AngelScript/GeneratedGlobalVariables.cpp");
+
+        ofs <<
+            "// DO NOT EDIT. This file is generated\n"
+            "\n"
+            "#include \"../Precompiled.h\"\n"
+            "#include \"../AngelScript/APITemplates.h\"\n"
+            "\n"
+            "#include \"../AngelScript/GeneratedIncludes.h\"\n"
+            "\n"
+            "// Some headers could re-define M_PI, ensure that it's undefined\n"
+            "#undef M_PI\n"
+            "\n"
+            "namespace Urho3D\n"
+            "{\n"
+            "\n";
+
+        ofs <<
+            "void ASRegisterGeneratedGlobalVariables(asIScriptEngine* engine)\n"
+            "{\n";
+
+        bool isFirst = true;
+        string openedDefine;
+        string lastComment;
+
+        for (const ProcessedGlobalVariable& globalVariable : globalVariables_)
+        {
+            if (globalVariable.insideDefine_ != openedDefine && !openedDefine.empty())
+            {
+                ofs << "#endif\n";
+                openedDefine.clear();
+            }
+
+            if (!isFirst && lastComment != globalVariable.comment_)
+                ofs << "\n";
+
+            if (globalVariable.insideDefine_ != openedDefine && !globalVariable.insideDefine_.empty())
+            {
+                ofs << "#ifdef " << globalVariable.insideDefine_ << "\n";
+                openedDefine = globalVariable.insideDefine_;
+            }
+
+            if (lastComment != globalVariable.comment_)
+                ofs << "    // " << globalVariable.comment_ << "\n";
+
+            ofs << "    " << globalVariable.registration_ << "\n";
+
+            isFirst = false;
+            lastComment = globalVariable.comment_;
+        }
+
+        if (!openedDefine.empty())
+            ofs << "#endif\n";
+
+        ofs <<
+            "}\n"
+            "\n"
+            "}\n";
+    }
+
+    // ============================================================================
+
+    // List of all required header files
+    static vector<string> headers_;
+
+    // Discarded header files for statistic
+    static vector<string> ignoredHeaders_;
+
+    // Add header to lists if not added yet
+    void AddHeader(const string& headerFile)
+    {
+        if (IsIgnoredHeader(headerFile))
+        {
+            if (!CONTAINS(ignoredHeaders_, headerFile))
+                ignoredHeaders_.push_back(headerFile);
+        }
+        else
+        {
+            if (!CONTAINS(headers_, headerFile))
+                headers_.push_back(headerFile);
+        }
+    }
+
+    // Write result to GeneratedIncludes.h
+    static void SaveIncludes(const string& outputBasePath)
+    {
+        sort(headers_.begin(), headers_.end());
+        sort(ignoredHeaders_.begin(), ignoredHeaders_.end());
+
+        ofstream ofs(outputBasePath + "/Source/Urho3D/AngelScript/GeneratedIncludes.h");
+
+        ofs <<
+            "// DO NOT EDIT. This file is generated\n"
+            "\n"
+            "#pragma once\n"
+            "\n";
+
+        string openedDefine;
+        bool isFirst = true;
+
+        for (const string& header : headers_)
+        {
+            string insideDefine = InsideDefine(header);
+
+            if (insideDefine != openedDefine)
+            {
+                if (!openedDefine.empty())
+                {
+                    ofs << "#endif\n";
+                    openedDefine.clear();
+                }
+
+                if (!isFirst) // First include can be guarded. Avoid print \n before it
+                    ofs << "\n";
+
+                if (!insideDefine.empty())
+                {
+                    ofs << "#ifdef " << insideDefine << "\n";
+                    openedDefine = insideDefine;
+                }
+            }
+
+            ofs << "#include \"" << header << "\"\n";
+            isFirst = false;
+        }
+
+        if (!openedDefine.empty())
+        {
+            ofs << "#endif\n";
+            openedDefine.clear();
+        }
+
+        if (headers_.size() > 0)
+            ofs << "\n";
+
+        if (ignoredHeaders_.size() > 0)
+            ofs << "// Ignored headers\n\n";
+
+        isFirst = true;
+
+        for (const string& header : ignoredHeaders_)
+        {
+            string insideDefine = InsideDefine(header);
+
+            if (insideDefine != openedDefine)
+            {
+                if (!openedDefine.empty())
+                {
+                    ofs << "//#endif\n";
+                    openedDefine.clear();
+                }
+
+                if (!isFirst) // First include can be guarded. Avoid print \n before it
+                    ofs << "\n";
+
+                if (!insideDefine.empty())
+                {
+                    ofs << "//#ifdef " << insideDefine << "\n";
+                    openedDefine = insideDefine;
+                }
+            }
+
+            ofs << "//#include \"" << header << "\"\n";
+            isFirst = false;
+        }
+
+        if (!openedDefine.empty())
+            ofs << "//#endif\n";
+    }
+}
+
+void SaveResult(const string& outputBasePath)
+{
+    Result::SaveEnums(outputBasePath);
+    Result::SaveGlobalFunctions(outputBasePath);
+    Result::SaveGlobalVariables(outputBasePath);
+    Result::SaveIncludes(outputBasePath);
 }
 
 }

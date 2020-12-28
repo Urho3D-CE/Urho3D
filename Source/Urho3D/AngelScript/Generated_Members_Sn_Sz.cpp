@@ -3,38 +3,7 @@
 #include "../Precompiled.h"
 #include "../AngelScript/APITemplates.h"
 
-#include "../Audio/Sound.h"
-#include "../Audio/SoundListener.h"
-#include "../Audio/SoundSource.h"
-#include "../Audio/SoundSource3D.h"
-#include "../Audio/SoundStream.h"
-#include "../Container/Str.h"
-#include "../Core/Spline.h"
-#include "../Core/StringHashRegister.h"
-#include "../Graphics/Drawable.h"
-#include "../Graphics/StaticModel.h"
-#include "../Graphics/StaticModelGroup.h"
-#include "../IO/Log.h"
-#include "../Math/Sphere.h"
-#include "../Math/StringHash.h"
-#include "../Scene/SplinePath.h"
-#include "../UI/Sprite.h"
-#ifdef URHO3D_URHO2D
-#include "../Urho2D/Drawable2D.h"
-#endif
-#ifdef URHO3D_URHO2D
-#include "../Urho2D/Sprite2D.h"
-#endif
-#ifdef URHO3D_URHO2D
-#include "../Urho2D/SpriteSheet2D.h"
-#endif
-#ifdef URHO3D_URHO2D
-#include "../Urho2D/StaticSprite2D.h"
-#endif
-#ifdef URHO3D_URHO2D
-#include "../Urho2D/StretchableSprite2D.h"
-#endif
-
+#include "../AngelScript/GeneratedIncludes.h"
 #include "../AngelScript/Manual.h"
 
 namespace Urho3D
@@ -144,7 +113,7 @@ static void Spline_Spline_Spline(Spline* ptr, const Spline &rhs)
     new(ptr) Spline(rhs);
 }
 
-// Spline::~Spline() | Implicitly-declared 
+// Spline::~Spline() | Implicitly-declared
 static void Spline_Destructor(Spline* ptr)
 {
     ptr->~Spline();
@@ -523,14 +492,14 @@ static void SourceBatch_Destructor_SourceBatch_void(SourceBatch* ptr)
 }
 
 #ifdef URHO3D_URHO2D
-// SourceBatch2D::~SourceBatch2D() | Implicitly-declared 
+// SourceBatch2D::~SourceBatch2D() | Implicitly-declared
 static void SourceBatch2D_Destructor(SourceBatch2D* ptr)
 {
     ptr->~SourceBatch2D();
 }
 #endif
 
-// StaticModelGeometryData::~StaticModelGeometryData() | Implicitly-declared 
+// StaticModelGeometryData::~StaticModelGeometryData() | Implicitly-declared
 static void StaticModelGeometryData_Destructor(StaticModelGeometryData* ptr)
 {
     ptr->~StaticModelGeometryData();
@@ -542,7 +511,7 @@ static void StoredLogMessage_StoredLogMessage_String_int_bool(StoredLogMessage* 
     new(ptr) StoredLogMessage(message, level, error);
 }
 
-// StoredLogMessage::~StoredLogMessage() | Implicitly-declared 
+// StoredLogMessage::~StoredLogMessage() | Implicitly-declared
 static void StoredLogMessage_Destructor(StoredLogMessage* ptr)
 {
     ptr->~StoredLogMessage();

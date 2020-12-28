@@ -3,19 +3,7 @@
 #include "../Precompiled.h"
 #include "../AngelScript/APITemplates.h"
 
-#include "../Core/Mutex.h"
-#include "../Graphics/Material.h"
-#include "../Graphics/Model.h"
-#include "../Math/Matrix2.h"
-#include "../Math/Matrix3.h"
-#include "../Math/Matrix3x4.h"
-#include "../Math/Matrix4.h"
-#ifdef URHO3D_PHYSICS
-#include "../Physics/PhysicsWorld.h"
-#endif
-#include "../UI/Menu.h"
-#include "../UI/MessageBox.h"
-
+#include "../AngelScript/GeneratedIncludes.h"
 #include "../AngelScript/Manual.h"
 
 namespace Urho3D
@@ -254,20 +242,20 @@ static void MutexLock_Destructor_MutexLock_void(MutexLock* ptr)
 }
 
 #ifdef URHO3D_PHYSICS
-// ManifoldPair::~ManifoldPair() | Implicitly-declared 
+// ManifoldPair::~ManifoldPair() | Implicitly-declared
 static void ManifoldPair_Destructor(ManifoldPair* ptr)
 {
     ptr->~ManifoldPair();
 }
 #endif
 
-// MaterialShaderParameter::~MaterialShaderParameter() | Implicitly-declared 
+// MaterialShaderParameter::~MaterialShaderParameter() | Implicitly-declared
 static void MaterialShaderParameter_Destructor(MaterialShaderParameter* ptr)
 {
     ptr->~MaterialShaderParameter();
 }
 
-// ModelMorph::~ModelMorph() | Implicitly-declared 
+// ModelMorph::~ModelMorph() | Implicitly-declared
 static void ModelMorph_Destructor(ModelMorph* ptr)
 {
     ptr->~ModelMorph();

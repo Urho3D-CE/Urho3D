@@ -3,24 +3,7 @@
 #include "../Precompiled.h"
 #include "../AngelScript/APITemplates.h"
 
-#include "../Graphics/Batch.h"
-#include "../Graphics/IndexBuffer.h"
-#include "../Graphics/Model.h"
-#ifdef URHO3D_IK
-#include "../IK/IKConstraint.h"
-#endif
-#ifdef URHO3D_IK
-#include "../IK/IKEffector.h"
-#endif
-#ifdef URHO3D_IK
-#include "../IK/IKSolver.h"
-#endif
-#include "../Input/Input.h"
-#include "../Math/Rect.h"
-#include "../Math/Vector2.h"
-#include "../Math/Vector3.h"
-#include "../Resource/Image.h"
-
+#include "../AngelScript/GeneratedIncludes.h"
 #include "../AngelScript/Manual.h"
 
 namespace Urho3D
@@ -183,13 +166,13 @@ static void IntVector3_IntVector3_IntVector3(IntVector3* ptr, const IntVector3 &
     new(ptr) IntVector3(rhs);
 }
 
-// IndexBufferDesc::~IndexBufferDesc() | Implicitly-declared 
+// IndexBufferDesc::~IndexBufferDesc() | Implicitly-declared
 static void IndexBufferDesc_Destructor(IndexBufferDesc* ptr)
 {
     ptr->~IndexBufferDesc();
 }
 
-// InstanceData::~InstanceData() | Implicitly-declared 
+// InstanceData::~InstanceData() | Implicitly-declared
 static void InstanceData_Destructor(InstanceData* ptr)
 {
     ptr->~InstanceData();

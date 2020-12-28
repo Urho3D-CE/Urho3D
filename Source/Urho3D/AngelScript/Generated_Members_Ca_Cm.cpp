@@ -3,11 +3,7 @@
 #include "../Precompiled.h"
 #include "../AngelScript/APITemplates.h"
 
-#include "../Graphics/Camera.h"
-#include "../Graphics/Light.h"
-#include "../UI/CheckBox.h"
-#include "../UI/Text.h"
-
+#include "../AngelScript/GeneratedIncludes.h"
 #include "../AngelScript/Manual.h"
 
 namespace Urho3D
@@ -76,7 +72,7 @@ static void CascadeParameters_CascadeParameters_float_float_float_float_float_fl
     new(ptr) CascadeParameters(split1, split2, split3, split4, fadeStart, biasAutoAdjust);
 }
 
-// CharLocation::~CharLocation() | Implicitly-declared 
+// CharLocation::~CharLocation() | Implicitly-declared
 static void CharLocation_Destructor(CharLocation* ptr)
 {
     ptr->~CharLocation();

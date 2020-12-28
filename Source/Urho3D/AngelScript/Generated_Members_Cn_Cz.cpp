@@ -3,49 +3,7 @@
 #include "../Precompiled.h"
 #include "../AngelScript/APITemplates.h"
 
-#include "../Core/Condition.h"
-#include "../Core/Context.h"
-#include "../Engine/Console.h"
-#include "../Graphics/ConstantBuffer.h"
-#include "../Graphics/CustomGeometry.h"
-#include "../Graphics/ParticleEffect.h"
-#include "../Input/Controls.h"
-#include "../Math/Color.h"
-#ifdef URHO3D_NAVIGATION
-#include "../Navigation/CrowdAgent.h"
-#endif
-#ifdef URHO3D_NAVIGATION
-#include "../Navigation/CrowdManager.h"
-#endif
-#ifdef URHO3D_NETWORK
-#include "../Network/Connection.h"
-#endif
-#ifdef URHO3D_PHYSICS
-#include "../Physics/CollisionShape.h"
-#endif
-#include "../Resource/Image.h"
-#include "../Scene/Component.h"
-#include "../Scene/ReplicationState.h"
-#include "../UI/Cursor.h"
-#ifdef URHO3D_URHO2D
-#include "../Urho2D/CollisionBox2D.h"
-#endif
-#ifdef URHO3D_URHO2D
-#include "../Urho2D/CollisionChain2D.h"
-#endif
-#ifdef URHO3D_URHO2D
-#include "../Urho2D/CollisionCircle2D.h"
-#endif
-#ifdef URHO3D_URHO2D
-#include "../Urho2D/CollisionEdge2D.h"
-#endif
-#ifdef URHO3D_URHO2D
-#include "../Urho2D/CollisionPolygon2D.h"
-#endif
-#ifdef URHO3D_URHO2D
-#include "../Urho2D/CollisionShape2D.h"
-#endif
-
+#include "../AngelScript/GeneratedIncludes.h"
 #include "../AngelScript/Manual.h"
 
 namespace Urho3D
@@ -439,13 +397,13 @@ static ColorFrame* ColorFrame_ColorFrame_Color_float(const Color &color, float t
     return new ColorFrame(color, time);
 }
 
-// ComponentReplicationState::~ComponentReplicationState() | Implicitly-declared 
+// ComponentReplicationState::~ComponentReplicationState() | Implicitly-declared
 static void ComponentReplicationState_Destructor(ComponentReplicationState* ptr)
 {
     ptr->~ComponentReplicationState();
 }
 
-// CompressedLevel::~CompressedLevel() | Implicitly-declared 
+// CompressedLevel::~CompressedLevel() | Implicitly-declared
 static void CompressedLevel_Destructor(CompressedLevel* ptr)
 {
     ptr->~CompressedLevel();
@@ -482,7 +440,7 @@ static void CursorShapeInfo_CursorShapeInfo_int(CursorShapeInfo* ptr, int system
     new(ptr) CursorShapeInfo(systemCursor);
 }
 
-// CursorShapeInfo::~CursorShapeInfo() | Implicitly-declared 
+// CursorShapeInfo::~CursorShapeInfo() | Implicitly-declared
 static void CursorShapeInfo_Destructor(CursorShapeInfo* ptr)
 {
     ptr->~CursorShapeInfo();

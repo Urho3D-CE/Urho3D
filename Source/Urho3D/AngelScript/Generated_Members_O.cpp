@@ -3,19 +3,7 @@
 #include "../Precompiled.h"
 #include "../AngelScript/APITemplates.h"
 
-#include "../Audio/OggVorbisSoundStream.h"
-#include "../Core/Object.h"
-#include "../Graphics/OcclusionBuffer.h"
-#include "../Graphics/Octree.h"
-#include "../Graphics/OctreeQuery.h"
-#ifdef URHO3D_NAVIGATION
-#include "../Navigation/Obstacle.h"
-#endif
-#ifdef URHO3D_NAVIGATION
-#include "../Navigation/OffMeshConnection.h"
-#endif
-#include "../Scene/ObjectAnimation.h"
-
+#include "../AngelScript/GeneratedIncludes.h"
 #include "../AngelScript/Manual.h"
 
 namespace Urho3D
@@ -117,19 +105,19 @@ static OggVorbisSoundStream* OggVorbisSoundStream_OggVorbisSoundStream_Sound(con
     return new OggVorbisSoundStream(sound);
 }
 
-// OcclusionBatch::~OcclusionBatch() | Implicitly-declared 
+// OcclusionBatch::~OcclusionBatch() | Implicitly-declared
 static void OcclusionBatch_Destructor(OcclusionBatch* ptr)
 {
     ptr->~OcclusionBatch();
 }
 
-// OcclusionBufferData::~OcclusionBufferData() | Implicitly-declared 
+// OcclusionBufferData::~OcclusionBufferData() | Implicitly-declared
 static void OcclusionBufferData_Destructor(OcclusionBufferData* ptr)
 {
     ptr->~OcclusionBufferData();
 }
 
-// OctreeQueryResult::~OctreeQueryResult() | Implicitly-declared 
+// OctreeQueryResult::~OctreeQueryResult() | Implicitly-declared
 static void OctreeQueryResult_Destructor(OctreeQueryResult* ptr)
 {
     ptr->~OctreeQueryResult();

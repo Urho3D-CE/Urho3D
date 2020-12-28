@@ -3,28 +3,7 @@
 #include "../Precompiled.h"
 #include "../AngelScript/APITemplates.h"
 
-#include "../Graphics/Batch.h"
-#include "../Graphics/Graphics.h"
-#include "../Graphics/Material.h"
-#include "../Graphics/Shader.h"
-#include "../Graphics/ShaderPrecache.h"
-#include "../Graphics/ShaderVariation.h"
-#include "../Graphics/Skeleton.h"
-#include "../Graphics/Skybox.h"
-#include "../Graphics/View.h"
-#include "../IO/Serializer.h"
-#ifdef URHO3D_NAVIGATION
-#include "../Navigation/NavBuildData.h"
-#endif
-#include "../Scene/ReplicationState.h"
-#include "../Scene/Scene.h"
-#include "../Scene/SceneResolver.h"
-#include "../Scene/Serializable.h"
-#include "../Scene/SmoothedTransform.h"
-#include "../UI/ScrollBar.h"
-#include "../UI/ScrollView.h"
-#include "../UI/Slider.h"
-
+#include "../AngelScript/GeneratedIncludes.h"
 #include "../AngelScript/Manual.h"
 
 namespace Urho3D
@@ -334,25 +313,25 @@ static void SmoothedTransform_UnsubscribeFromAllEventsExcept_PODVectorStringHash
     ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
 }
 
-// ScenePassInfo::~ScenePassInfo() | Implicitly-declared 
+// ScenePassInfo::~ScenePassInfo() | Implicitly-declared
 static void ScenePassInfo_Destructor(ScenePassInfo* ptr)
 {
     ptr->~ScenePassInfo();
 }
 
-// SceneReplicationState::~SceneReplicationState() | Implicitly-declared 
+// SceneReplicationState::~SceneReplicationState() | Implicitly-declared
 static void SceneReplicationState_Destructor(SceneReplicationState* ptr)
 {
     ptr->~SceneReplicationState();
 }
 
-// ScratchBuffer::~ScratchBuffer() | Implicitly-declared 
+// ScratchBuffer::~ScratchBuffer() | Implicitly-declared
 static void ScratchBuffer_Destructor(ScratchBuffer* ptr)
 {
     ptr->~ScratchBuffer();
 }
 
-// ScreenModeParams::~ScreenModeParams() | Implicitly-declared 
+// ScreenModeParams::~ScreenModeParams() | Implicitly-declared
 static void ScreenModeParams_Destructor(ScreenModeParams* ptr)
 {
     ptr->~ScreenModeParams();
@@ -376,13 +355,13 @@ static void ShaderParameter_ShaderParameter_ShaderType_String_unsigned_unsigned(
     new(ptr) ShaderParameter(type, name, reg, regCount);
 }
 
-// ShaderParameter::~ShaderParameter() | Implicitly-declared 
+// ShaderParameter::~ShaderParameter() | Implicitly-declared
 static void ShaderParameter_Destructor(ShaderParameter* ptr)
 {
     ptr->~ShaderParameter();
 }
 
-// ShadowBatchQueue::~ShadowBatchQueue() | Implicitly-declared 
+// ShadowBatchQueue::~ShadowBatchQueue() | Implicitly-declared
 static void ShadowBatchQueue_Destructor(ShadowBatchQueue* ptr)
 {
     ptr->~ShadowBatchQueue();

@@ -3,24 +3,7 @@
 #include "../Precompiled.h"
 #include "../AngelScript/APITemplates.h"
 
-#include "../Container/VectorBase.h"
-#include "../Core/Variant.h"
-#include "../Graphics/GraphicsDefs.h"
-#include "../Graphics/Model.h"
-#include "../Graphics/VertexBuffer.h"
-#include "../Graphics/View.h"
-#include "../Graphics/Viewport.h"
-#include "../IO/VectorBuffer.h"
-#include "../Math/Vector2.h"
-#include "../Math/Vector3.h"
-#include "../Math/Vector4.h"
-#include "../Scene/ValueAnimation.h"
-#include "../Scene/ValueAnimationInfo.h"
-#include "../UI/View3D.h"
-#ifdef URHO3D_URHO2D
-#include "../Urho2D/Drawable2D.h"
-#endif
-
+#include "../AngelScript/GeneratedIncludes.h"
 #include "../AngelScript/Manual.h"
 
 namespace Urho3D
@@ -319,7 +302,7 @@ static void Vector4_Vector4_float_float_float_float(Vector4* ptr, float x, float
     new(ptr) Vector4(x, y, z, w);
 }
 
-// VectorBase::~VectorBase() | Implicitly-declared 
+// VectorBase::~VectorBase() | Implicitly-declared
 static void VectorBase_Destructor(VectorBase* ptr)
 {
     ptr->~VectorBase();
@@ -338,7 +321,7 @@ static void VectorBuffer_VectorBuffer_Deserializer_unsigned(VectorBuffer* ptr, D
     new(ptr) VectorBuffer(source, size);
 }
 
-// VectorBuffer::~VectorBuffer() | Implicitly-declared 
+// VectorBuffer::~VectorBuffer() | Implicitly-declared
 static void VectorBuffer_Destructor(VectorBuffer* ptr)
 {
     ptr->~VectorBuffer();
@@ -503,33 +486,33 @@ static Viewport* Viewport_Viewport_Context_Scene_Camera_IntRect_RenderPath(Scene
     return new Viewport(GetScriptContext(), scene, camera, rect, renderPath);
 }
 
-// VAnimEventFrame::~VAnimEventFrame() | Implicitly-declared 
+// VAnimEventFrame::~VAnimEventFrame() | Implicitly-declared
 static void VAnimEventFrame_Destructor(VAnimEventFrame* ptr)
 {
     ptr->~VAnimEventFrame();
 }
 
-// VAnimKeyFrame::~VAnimKeyFrame() | Implicitly-declared 
+// VAnimKeyFrame::~VAnimKeyFrame() | Implicitly-declared
 static void VAnimKeyFrame_Destructor(VAnimKeyFrame* ptr)
 {
     ptr->~VAnimKeyFrame();
 }
 
 #ifdef URHO3D_URHO2D
-// Vertex2D::~Vertex2D() | Implicitly-declared 
+// Vertex2D::~Vertex2D() | Implicitly-declared
 static void Vertex2D_Destructor(Vertex2D* ptr)
 {
     ptr->~Vertex2D();
 }
 #endif
 
-// VertexBufferDesc::~VertexBufferDesc() | Implicitly-declared 
+// VertexBufferDesc::~VertexBufferDesc() | Implicitly-declared
 static void VertexBufferDesc_Destructor(VertexBufferDesc* ptr)
 {
     ptr->~VertexBufferDesc();
 }
 
-// VertexBufferMorph::~VertexBufferMorph() | Implicitly-declared 
+// VertexBufferMorph::~VertexBufferMorph() | Implicitly-declared
 static void VertexBufferMorph_Destructor(VertexBufferMorph* ptr)
 {
     ptr->~VertexBufferMorph();
@@ -541,7 +524,7 @@ static void VertexElement_VertexElement_VertexElementType_VertexElementSemantic_
     new(ptr) VertexElement(type, semantic, index, perInstance);
 }
 
-// VertexElement::~VertexElement() | Implicitly-declared 
+// VertexElement::~VertexElement() | Implicitly-declared
 static void VertexElement_Destructor(VertexElement* ptr)
 {
     ptr->~VertexElement();

@@ -3,13 +3,7 @@
 #include "../Precompiled.h"
 #include "../AngelScript/APITemplates.h"
 
-#include "../Scene/UnknownComponent.h"
-#include "../UI/UI.h"
-#include "../UI/UIBatch.h"
-#include "../UI/UIComponent.h"
-#include "../UI/UIElement.h"
-#include "../UI/UISelectable.h"
-
+#include "../AngelScript/GeneratedIncludes.h"
 #include "../AngelScript/Manual.h"
 
 namespace Urho3D
@@ -45,7 +39,7 @@ static void UI_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(UI* ptr, 
     ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
 }
 
-// UIBatch::~UIBatch() | Implicitly-declared 
+// UIBatch::~UIBatch() | Implicitly-declared
 static void UIBatch_Destructor(UIBatch* ptr)
 {
     ptr->~UIBatch();

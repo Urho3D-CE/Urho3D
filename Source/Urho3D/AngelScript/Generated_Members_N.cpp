@@ -3,28 +3,7 @@
 #include "../Precompiled.h"
 #include "../AngelScript/APITemplates.h"
 
-#include "../IO/NamedPipe.h"
-#ifdef URHO3D_NAVIGATION
-#include "../Navigation/NavArea.h"
-#endif
-#ifdef URHO3D_NAVIGATION
-#include "../Navigation/NavBuildData.h"
-#endif
-#ifdef URHO3D_NAVIGATION
-#include "../Navigation/Navigable.h"
-#endif
-#ifdef URHO3D_NAVIGATION
-#include "../Navigation/NavigationMesh.h"
-#endif
-#ifdef URHO3D_NETWORK
-#include "../Network/Network.h"
-#endif
-#ifdef URHO3D_NETWORK
-#include "../Network/NetworkPriority.h"
-#endif
-#include "../Scene/Node.h"
-#include "../Scene/ReplicationState.h"
-
+#include "../AngelScript/GeneratedIncludes.h"
 #include "../AngelScript/Manual.h"
 
 namespace Urho3D
@@ -218,7 +197,7 @@ static void Node_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Node* p
 }
 
 #ifdef URHO3D_NAVIGATION
-// NavAreaStub::~NavAreaStub() | Implicitly-declared 
+// NavAreaStub::~NavAreaStub() | Implicitly-declared
 static void NavAreaStub_Destructor(NavAreaStub* ptr)
 {
     ptr->~NavAreaStub();
@@ -232,7 +211,7 @@ static void NavBuildData_Destructor_NavBuildData_void(NavBuildData* ptr)
 }
 
 #ifdef URHO3D_NAVIGATION
-// NavigationGeometryInfo::~NavigationGeometryInfo() | Implicitly-declared 
+// NavigationGeometryInfo::~NavigationGeometryInfo() | Implicitly-declared
 static void NavigationGeometryInfo_Destructor(NavigationGeometryInfo* ptr)
 {
     ptr->~NavigationGeometryInfo();
@@ -240,26 +219,26 @@ static void NavigationGeometryInfo_Destructor(NavigationGeometryInfo* ptr)
 #endif
 
 #ifdef URHO3D_NAVIGATION
-// NavigationPathPoint::~NavigationPathPoint() | Implicitly-declared 
+// NavigationPathPoint::~NavigationPathPoint() | Implicitly-declared
 static void NavigationPathPoint_Destructor(NavigationPathPoint* ptr)
 {
     ptr->~NavigationPathPoint();
 }
 #endif
 
-// NetworkState::~NetworkState() | Implicitly-declared 
+// NetworkState::~NetworkState() | Implicitly-declared
 static void NetworkState_Destructor(NetworkState* ptr)
 {
     ptr->~NetworkState();
 }
 
-// NodeImpl::~NodeImpl() | Implicitly-declared 
+// NodeImpl::~NodeImpl() | Implicitly-declared
 static void NodeImpl_Destructor(NodeImpl* ptr)
 {
     ptr->~NodeImpl();
 }
 
-// NodeReplicationState::~NodeReplicationState() | Implicitly-declared 
+// NodeReplicationState::~NodeReplicationState() | Implicitly-declared
 static void NodeReplicationState_Destructor(NodeReplicationState* ptr)
 {
     ptr->~NodeReplicationState();

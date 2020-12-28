@@ -66,7 +66,7 @@ class ScriptResourceRouter : public ResourceRouter
 };
 
 void ASRegisterManualFirst(asIScriptEngine* engine);
-void ASRegisterGenerated_Enums(asIScriptEngine* engine);
+void ASRegisterGeneratedEnums(asIScriptEngine* engine);
 void ASRegisterGenerated_Classes(asIScriptEngine* engine);
 void ASRegisterGenerated_Members_HighPriority(asIScriptEngine* engine);
 
@@ -103,8 +103,8 @@ void ASRegisterGenerated_Members_Z(asIScriptEngine* engine);
 
 void ASRegisterGenerated_Members_Other(asIScriptEngine* engine);
 
-void ASRegisterGenerated_GlobalVariables(asIScriptEngine* engine);
-void ASRegisterGenerated_GlobalFunctions(asIScriptEngine* engine);
+void ASRegisterGeneratedGlobalVariables(asIScriptEngine* engine);
+void ASRegisterGeneratedGlobalFunctions(asIScriptEngine* engine);
 
 void ASRegisterManualLast(asIScriptEngine* engine);
 
@@ -150,10 +150,10 @@ Script::Script(Context* context) :
     RegisterScriptInterfaceAPI(scriptEngine_);
 
     ASRegisterManualFirst(scriptEngine_);
-    ASRegisterGenerated_Enums(scriptEngine_);
+    ASRegisterGeneratedEnums(scriptEngine_);
     ASRegisterGenerated_Classes(scriptEngine_);
     ASRegisterGenerated_Members_HighPriority(scriptEngine_);
-    
+
     ASRegisterGenerated_Members_A(scriptEngine_);
     ASRegisterGenerated_Members_B(scriptEngine_);
     ASRegisterGenerated_Members_Ca_Cm(scriptEngine_);
@@ -186,10 +186,10 @@ Script::Script(Context* context) :
     ASRegisterGenerated_Members_Z(scriptEngine_);
 
     ASRegisterGenerated_Members_Other(scriptEngine_);
-    
-    ASRegisterGenerated_GlobalVariables(scriptEngine_);
-    ASRegisterGenerated_GlobalFunctions(scriptEngine_);
-    
+
+    ASRegisterGeneratedGlobalVariables(scriptEngine_);
+    ASRegisterGeneratedGlobalFunctions(scriptEngine_);
+
     ASRegisterManualLast(scriptEngine_);
 
     // Register the rest of the script API

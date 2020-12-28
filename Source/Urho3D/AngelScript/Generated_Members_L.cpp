@@ -3,17 +3,7 @@
 #include "../Precompiled.h"
 #include "../AngelScript/APITemplates.h"
 
-#include "../Container/LinkedList.h"
-#include "../Container/ListBase.h"
-#include "../Graphics/Batch.h"
-#include "../Graphics/Light.h"
-#include "../Graphics/View.h"
-#include "../IO/Log.h"
-#include "../Resource/Localization.h"
-#include "../Scene/LogicComponent.h"
-#include "../UI/LineEdit.h"
-#include "../UI/ListView.h"
-
+#include "../AngelScript/GeneratedIncludes.h"
 #include "../AngelScript/Manual.h"
 
 namespace Urho3D
@@ -90,7 +80,7 @@ static void LineEdit_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Lin
     ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
 }
 
-// ListBase::~ListBase() | Implicitly-declared 
+// ListBase::~ListBase() | Implicitly-declared
 static void ListBase_Destructor(ListBase* ptr)
 {
     ptr->~ListBase();
@@ -198,31 +188,31 @@ static void LogicComponent_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bo
     ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
 }
 
-// LightBatchQueue::~LightBatchQueue() | Implicitly-declared 
+// LightBatchQueue::~LightBatchQueue() | Implicitly-declared
 static void LightBatchQueue_Destructor(LightBatchQueue* ptr)
 {
     ptr->~LightBatchQueue();
 }
 
-// LightQueryResult::~LightQueryResult() | Implicitly-declared 
+// LightQueryResult::~LightQueryResult() | Implicitly-declared
 static void LightQueryResult_Destructor(LightQueryResult* ptr)
 {
     ptr->~LightQueryResult();
 }
 
-// LinkedListNode::~LinkedListNode() | Implicitly-declared 
+// LinkedListNode::~LinkedListNode() | Implicitly-declared
 static void LinkedListNode_Destructor(LinkedListNode* ptr)
 {
     ptr->~LinkedListNode();
 }
 
-// ListIteratorBase::~ListIteratorBase() | Implicitly-declared 
+// ListIteratorBase::~ListIteratorBase() | Implicitly-declared
 static void ListIteratorBase_Destructor(ListIteratorBase* ptr)
 {
     ptr->~ListIteratorBase();
 }
 
-// ListNodeBase::~ListNodeBase() | Implicitly-declared 
+// ListNodeBase::~ListNodeBase() | Implicitly-declared
 static void ListNodeBase_Destructor(ListNodeBase* ptr)
 {
     ptr->~ListNodeBase();

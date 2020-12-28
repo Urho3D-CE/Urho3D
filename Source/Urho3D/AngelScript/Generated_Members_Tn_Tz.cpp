@@ -3,13 +3,7 @@
 #include "../Precompiled.h"
 #include "../AngelScript/APITemplates.h"
 
-#include "../Graphics/RibbonTrail.h"
-#include "../Input/Input.h"
-#ifdef URHO3D_PHYSICS
-#include "../Physics/CollisionShape.h"
-#endif
-#include "../UI/ToolTip.h"
-
+#include "../AngelScript/GeneratedIncludes.h"
 #include "../AngelScript/Manual.h"
 
 namespace Urho3D
@@ -65,7 +59,7 @@ static void TrailPoint_TrailPoint_Vector3_Vector3(TrailPoint* ptr, const Vector3
     new(ptr) TrailPoint(position, forward);
 }
 
-// TrailPoint::~TrailPoint() | Implicitly-declared 
+// TrailPoint::~TrailPoint() | Implicitly-declared
 static void TrailPoint_Destructor(TrailPoint* ptr)
 {
     ptr->~TrailPoint();

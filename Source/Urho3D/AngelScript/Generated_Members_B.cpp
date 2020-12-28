@@ -3,16 +3,7 @@
 #include "../Precompiled.h"
 #include "../AngelScript/APITemplates.h"
 
-#include "../Audio/BufferedSoundStream.h"
-#include "../Graphics/Batch.h"
-#include "../Graphics/BillboardSet.h"
-#include "../Graphics/Light.h"
-#include "../Graphics/Skeleton.h"
-#include "../Math/BoundingBox.h"
-#include "../Resource/BackgroundLoader.h"
-#include "../UI/BorderImage.h"
-#include "../UI/Button.h"
-
+#include "../AngelScript/GeneratedIncludes.h"
 #include "../AngelScript/Manual.h"
 
 namespace Urho3D
@@ -178,7 +169,7 @@ static void Button_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Butto
     ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
 }
 
-// BackgroundLoadItem::~BackgroundLoadItem() | Implicitly-declared 
+// BackgroundLoadItem::~BackgroundLoadItem() | Implicitly-declared
 static void BackgroundLoadItem_Destructor(BackgroundLoadItem* ptr)
 {
     ptr->~BackgroundLoadItem();
@@ -190,7 +181,7 @@ static void Batch_Batch_SourceBatch(Batch* ptr, const SourceBatch &rhs)
     new(ptr) Batch(rhs);
 }
 
-// Batch::~Batch() | Implicitly-declared 
+// Batch::~Batch() | Implicitly-declared
 static void Batch_Destructor(Batch* ptr)
 {
     ptr->~Batch();
@@ -214,13 +205,13 @@ static void BatchGroupKey_BatchGroupKey_Batch(BatchGroupKey* ptr, const Batch &b
     new(ptr) BatchGroupKey(batch);
 }
 
-// BatchGroupKey::~BatchGroupKey() | Implicitly-declared 
+// BatchGroupKey::~BatchGroupKey() | Implicitly-declared
 static void BatchGroupKey_Destructor(BatchGroupKey* ptr)
 {
     ptr->~BatchGroupKey();
 }
 
-// BatchQueue::~BatchQueue() | Implicitly-declared 
+// BatchQueue::~BatchQueue() | Implicitly-declared
 static void BatchQueue_Destructor(BatchQueue* ptr)
 {
     ptr->~BatchQueue();

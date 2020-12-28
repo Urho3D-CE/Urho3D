@@ -82,7 +82,7 @@ static bool IsUsing(const string& identifier)
     {
         UsingAnalyzer usingAnalyzer(memberdef);
         
-        if (usingAnalyzer.GetIdentifier() == identifier)
+        if (usingAnalyzer.GetName() == identifier)
             return true;
     }
 
@@ -92,7 +92,6 @@ static bool IsUsing(const string& identifier)
 bool IsKnownType(const string& name)
 {
     static vector<string> _knownTypes = {
-        "", // TODO: fix opConv()
         "void",
         "bool",
         "size_t",
@@ -577,14 +576,7 @@ string GenerateWrapper(const GlobalFunctionAnalyzer& functionAnalyzer, vector<sh
 {
     string result;
     
-    string insideDefine = InsideDefine(functionAnalyzer.GetHeaderFile());
-
-    if (!insideDefine.empty())
-        result += "#ifdef " + insideDefine + "\n";
-
-    result +=
-        "// " + functionAnalyzer.GetLocation() + "\n"
-        "static " + convertedReturn->glueReturnType_ + " " + GenerateWrapperName(functionAnalyzer) + "(";
+    result = "static " + convertedReturn->glueReturnType_ + " " + GenerateWrapperName(functionAnalyzer) + "(";
 
     for (size_t i = 0; i < convertedParams.size(); i++)
     {
@@ -621,12 +613,7 @@ string GenerateWrapper(const GlobalFunctionAnalyzer& functionAnalyzer, vector<sh
     if (convertedReturn->glueReturnType_ != "void")
         result += "    " + convertedReturn->glueReturn_;
 
-    result += "}\n";
-
-    if (!insideDefine.empty())
-        result += "#endif\n";
-
-    result += "\n";
+    result += "}";
 
     return result;
 }
@@ -773,10 +760,6 @@ string Generate_asMETHODPR(const ClassFunctionAnalyzer& functionAnalyzer, bool t
 
     string returnType = functionAnalyzer.GetReturnType(templateSpecialization).ToString();
     
-    // Extracting type from function name (workaround for https://github.com/doxygen/doxygen/issues/7732)
-    if (functionAnalyzer.IsConsversionOperator())
-        returnType = CutStart(functionName, "operator ");
-
     if (templateVersion)
         return "asMETHODPR(T, " + functionName + ", " + cppParams + ", " + returnType + ")";
     else
